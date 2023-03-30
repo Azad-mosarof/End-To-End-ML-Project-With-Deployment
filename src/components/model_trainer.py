@@ -2,8 +2,8 @@ import os
 import sys
 from dataclasses import dataclass
 
-from catboost import CatBoostClassifier, CatBoostRegressor
-from sklearn.ensemble import RandomForestClassifier,AdaBoostClassifier,GradientBoostingClassifier,RandomForestRegressor,AdaBoostRegressor,GradientBoostingRegressor
+from catboost import CatBoostRegressor
+from sklearn.ensemble import RandomForestRegressor,AdaBoostRegressor,GradientBoostingRegressor
 
 
 from sklearn.linear_model import LinearRegression
@@ -57,6 +57,8 @@ class ModelTrainer:
                     "splitter": ["best", "random"],
                 },
 
+                # splitter : The strategy used to choose the split at each node. Supported strategies are “best” to 
+
                 "KNeighborsRegressor": {
                     "n_neighbors": [3, 5, 7, 9]
                 },
@@ -65,6 +67,11 @@ class ModelTrainer:
                     "n_estimators": [100, 200, 300, 400],
                     "criterion": ["mse", "mae"],
                 },
+
+                # criterion : The function to measure the quality of a split. Supported criteria are “friedman_mse” 
+                # for the mean squared error with improvement score by Friedman, “mse” for mean squared error, and 
+                # “mae” for the mean absolute error. The default value of “friedman_mse” is generally the best as it 
+                # can provide a better approximation in some cases.
 
                 "XGBRegressor": {
                     "n_estimators": [100, 200, 300, 400],
@@ -85,6 +92,7 @@ class ModelTrainer:
                     "n_estimators": [100, 200, 300, 400],
                     "learning_rate": [0.1, 0.2, 0.3, 0.4],
                 }
+                ## n_estimators is the number of trees in the forest
             }
             
 

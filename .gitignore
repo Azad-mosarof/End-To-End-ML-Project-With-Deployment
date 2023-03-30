@@ -14,3 +14,4 @@ src/__pycache__/
 mlproject.egg-info/
 src/components/__pycache__
 catboost_info/
+src/pipeline/__pycache__/
