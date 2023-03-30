@@ -11,7 +11,7 @@ app = Flask(__name__, template_folder="template")
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('home.html')
 
 @app.route('/predictdata', methods=['GET','POST'])
 def predict_datapoint():
