@@ -11,7 +11,7 @@ from src.logger import logging
 import os
 from src.utils import save_object
 
-
+@dataclass
 class DataTransformationConfig:
     preprocessor_object_file_path = os.path.join('artifacts', "preprocessor.pkl")
 
@@ -41,6 +41,12 @@ class DataTransformation:
                     ("scaler", StandardScaler())
                 ]
             )
+
+            """imputer is responsible for handling the missing value
+            one_hot_encoder is responsible for converting the categorical value into numerical value
+            Scaler is responsible for scaling the value
+            standard scaler is used for standardization
+            median strategy is used for imputation"""
 
             cat_pipeline = Pipeline(
                 steps=[

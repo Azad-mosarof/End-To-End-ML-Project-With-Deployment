@@ -8,6 +8,8 @@ from dataclasses import dataclass
 from src.components.data_transformation import DataTransformation
 from src.components.data_transformation import DataTransformationConfig
 
+# @dataclasses we use when we need to store only variables , it saves time & 
+# space as we no need to write constructor
 @dataclass
 class DataIngestionConfig:
     train_data_path: str = os.path.join('artifacts', "train.csv")
