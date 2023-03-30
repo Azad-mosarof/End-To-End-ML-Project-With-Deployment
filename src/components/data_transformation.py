@@ -101,6 +101,8 @@ class DataTransformation:
                 input_feature_train_arr, np.array(target_feature_train_df)
             ]
 
+            #np.c_ is used to concatenate the array
+
             test_arr = np.c_[
                 input_feature_test_arr, np.array(target_feature_test_df)
             ]
