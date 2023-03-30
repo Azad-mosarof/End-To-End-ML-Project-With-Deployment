@@ -47,12 +47,54 @@ class ModelTrainer:
                 "GradientBoostingRegressor": GradientBoostingRegressor(),
             }
 
+            ## Hyperparameter tuning for all the models
+
+            params = {
+                "LinearRegression": {},
+
+                "DecisionTreeRegressor": {
+                    "criterion": ["mse", "friedman_mse", "mae"],
+                    "splitter": ["best", "random"],
+                },
+
+                "KNeighborsRegressor": {
+                    "n_neighbors": [3, 5, 7, 9]
+                },
+
+                "RandomForestRegressor": {
+                    "n_estimators": [100, 200, 300, 400],
+                    "criterion": ["mse", "mae"],
+                },
+
+                "XGBRegressor": {
+                    "n_estimators": [100, 200, 300, 400],
+                    "learning_rate": [0.1, 0.2, 0.3, 0.4],
+                },
+
+                "CatBoostRegressor": {
+                    "n_estimators": [100, 200, 300, 400],
+                    "learning_rate": [0.1, 0.2, 0.3, 0.4],
+                },
+
+                "AdaBoostRegressor": {
+                    "n_estimators": [100, 200, 300, 400],
+                    "learning_rate": [0.1, 0.2, 0.3, 0.4],
+                },
+
+                "GradientBoostingRegressor": {
+                    "n_estimators": [100, 200, 300, 400],
+                    "learning_rate": [0.1, 0.2, 0.3, 0.4],
+                }
+            }
+            
+
             model_report: dict = evaluate_model(
                 x_train = x_train,
                 y_train = y_train,
                 x_test = x_test,
                 y_test = y_test,
-                models = models
+                models = models,
+                params=params
             )
 
             ## TO get the best model score from dictionary
